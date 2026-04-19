@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSlideshow();
   initServicos();
   initPortfolio();
+  initDepoimentos();
   initContactForm();
   initScrollTop();
 });
@@ -25,38 +26,34 @@ function initHeroSlideshow() {
 
   let current = 0;
   const total = slides.length;
-  const interval = 5000; // 5 segundos por slide
+  const INTERVAL = 5000;
+  let timer;
 
-  // Criar dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Slide ${i + 1}`);
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-  });
+  // Criar dots de navegação
+  if (dotsContainer) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => { goToSlide(i); resetTimer(); });
+      dotsContainer.appendChild(dot);
+    });
+  }
 
   function goToSlide(index) {
     slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
+    if (dotsContainer) dotsContainer.children[current].classList.remove('active');
     current = index;
     slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
-    // Reinicia animação de zoom
-    slides[current].style.animation = 'none';
-    slides[current].offsetHeight; // reflow
-    slides[current].style.animation = '';
+    if (dotsContainer) dotsContainer.children[current].classList.add('active');
   }
 
-  // Avançar automaticamente — referência guardada para poder cancelar se necessário
-  const slideshowTimer = setInterval(() => {
-    goToSlide((current + 1) % total);
-  }, interval);
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goToSlide((current + 1) % total), INTERVAL);
+  }
 
-  // Pausar ao interagir com os dots
-  dotsContainer.addEventListener('click', () => {
-    clearInterval(slideshowTimer);
-  });
+  resetTimer();
 }
 
 // ── Header Scroll Effect ────────────────────────────────────
@@ -340,13 +337,57 @@ function initPortfolio() {
     el.style.transitionDelay = `${index * 0.06}s`;
     el.innerHTML = `
       <img src="${item.src}" alt="${item.titulo}" loading="lazy">
-      <div class="portfolio-overlay"></div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-titulo">${item.titulo}</span>
+      </div>
     `;
-    // Sem click — apenas efeito hover visual
     grid.appendChild(el);
   });
 
   observeNewElements(grid.querySelectorAll('.portfolio-item'));
+}
+
+// ── Depoimentos ─────────────────────────────────────────────
+function initDepoimentos() {
+  const grid = document.getElementById('depoimentos-grid');
+  if (!grid) return;
+
+  const depoimentos = [
+    {
+      nome: 'Carlos Eduardo',
+      cargo: 'Gerente de Manutenção — BRF',
+      texto: 'A Global Eletromecânica superou nossas expectativas. Equipe altamente qualificada, pontual e comprometida com a segurança. Recomendo sem hesitar.',
+      estrelas: 5
+    },
+    {
+      nome: 'Rodrigo Almeida',
+      cargo: 'Engenheiro de Produção — Cargill',
+      texto: 'Parceria de anos. Sempre que precisamos de uma parada programada ou manutenção emergencial, a Global está pronta. Confiança total no trabalho deles.',
+      estrelas: 5
+    },
+    {
+      nome: 'Fernanda Costa',
+      cargo: 'Supervisora Industrial — LAR Cooperativa',
+      texto: 'Profissionalismo e qualidade técnica em cada entrega. A montagem das estruturas metálicas foi executada com precisão e dentro do prazo.',
+      estrelas: 5
+    }
+  ];
+
+  depoimentos.forEach((d, i) => {
+    const card = document.createElement('div');
+    card.className = 'depoimento-card';
+    card.style.transitionDelay = `${i * 0.12}s`;
+    card.innerHTML = `
+      <div class="depoimento-quote">"</div>
+      <div class="depoimento-stars">${'★'.repeat(d.estrelas)}</div>
+      <p class="depoimento-text">${d.texto}</p>
+      <div class="depoimento-author">${d.nome}</div>
+      <div class="depoimento-cargo">${d.cargo}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  observeNewElements(grid.querySelectorAll('.depoimento-card'));
 }
 
 // ── Formulário de Contato — Formspree ──────────────────────

@@ -59,20 +59,6 @@ function initHeroSlideshow() {
   });
 }
 
-// ── Inicialização ───────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  initHeader();
-  initMobileMenu();
-  initSmoothScroll();
-  initScrollAnimations();
-  initCounters();
-  initHeroSlideshow();
-  initServicos();
-  initPortfolio();
-  initContactForm();
-  initScrollTop();
-});
-
 // ── Header Scroll Effect ────────────────────────────────────
 function initHeader() {
   const header = document.getElementById('header');

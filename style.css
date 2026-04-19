@@ -604,7 +604,7 @@ section:not([data-animate]) .section-title span::after {
 /* ── Hero Dots ──────────────────────────────────────────────── */
 .hero-dots {
   position: absolute;
-  bottom: 80px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

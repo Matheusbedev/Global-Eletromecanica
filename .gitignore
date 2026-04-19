@@ -1,0 +1,11 @@
+﻿site antigo/
+.kiro/
+.vscode/
+*.tmp
+*.zip
+CHANGELOG.md
+GALERIA.md
+MELHORIAS-APLICADAS.md
+MELHORIAS-PREMIUM.md
+README.md
+RESUMO-MELHORIAS.md

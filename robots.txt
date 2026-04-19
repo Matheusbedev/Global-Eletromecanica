@@ -1,0 +1,7 @@
+﻿User-agent: *
+Disallow: /site antigo/
+Disallow: /prints_carta/
+Disallow: /FOTOS SERVICO/
+Allow: /
+
+Sitemap: https://www.globaleletromecanica.com.br/sitemap.xml

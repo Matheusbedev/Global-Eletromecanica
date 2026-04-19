@@ -3,6 +3,9 @@
 // Autor: @dev.matheuss | dev.matheusaugustoo@gmail.com
 // ============================================================
 
+// ── Prevenção de FOUC ───────────────────────────────────────
+document.documentElement.classList.add('js-loaded');
+
 // ── Inicialização ───────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
@@ -16,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDepoimentos();
   initContactForm();
   initScrollTop();
+  initPerformanceOptimizations();
 });
 
 // ── Hero Slideshow Automático ───────────────────────────────
@@ -233,35 +237,38 @@ function initServicos() {
 
   const servicos = [
     {
-      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+      icon: 'fa-wrench',
       titulo: 'Manutenção Industrial',
+      desc: 'Paradas programadas, reformas e manutenção corretiva com agilidade e segurança.',
       itens: [
         'Paradas programadas de unidades produtivas',
         'Reforma de equipamentos industriais',
-        'Extratores, redlers, secadores, elevadores, roscas e correias',
-        'Bombas, redutores, equipamentos estáticos e rotativos',
+        'Extratores, redlers, secadores, elevadores e correias',
+        'Bombas, redutores, equipamentos rotativos',
         'Serviços de campo em motores elétricos',
       ]
     },
     {
-      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+      icon: 'fa-industry',
       titulo: 'Montagem Industrial',
+      desc: 'Montagem mecânica e estrutural com precisão técnica e cumprimento de prazos.',
       itens: [
         'Montagem mecânica de equipamentos e acessórios',
         'Fabricação e montagem de estruturas metálicas',
         'Fabricação e reforma de coberturas metálicas',
         'Instalação de tubulações e caldeiraria geral',
-        'Redes de processos, utilidades, hidráulica e hidrantes',
+        'Redes de processos, utilidades e hidrantes',
       ]
     },
     {
-      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+      icon: 'fa-bolt',
       titulo: 'Instalações Elétricas',
+      desc: 'Instalações e manutenção elétrica industrial com total conformidade às normas.',
       itens: [
         'Instalações, montagem e manutenção elétrica geral',
-        'Tubulações em diversas bitolas, materiais e classes de pressão',
+        'Tubulações em diversas bitolas e classes de pressão',
         'Serviços de caldeiraria de processos e utilidades',
-        'Toda a rede hidráulica e de hidrantes',
+        'Rede hidráulica e de hidrantes completa',
       ]
     },
   ];
@@ -269,14 +276,21 @@ function initServicos() {
   servicos.forEach((s, i) => {
     const card = document.createElement('div');
     card.className = 'servico-card';
-    card.style.transitionDelay = `${i * 0.12}s`;
+    card.style.transitionDelay = `${i * 0.1}s`;
     card.innerHTML = `
-      <div class="servico-icon">${s.icon}</div>
+      <span class="servico-num">0${i + 1}</span>
+      <div class="servico-icon-wrap">
+        <i class="fas ${s.icon}"></i>
+      </div>
       <h3>${s.titulo}</h3>
+      <p class="servico-card-desc">${s.desc}</p>
+      <div class="servico-divider"></div>
       <ul class="servico-list">
         ${s.itens.map(item => `
           <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="check-icon">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
             ${item}
           </li>`).join('')}
       </ul>
@@ -284,28 +298,21 @@ function initServicos() {
     grid.appendChild(card);
   });
 
-  // Card especial — Caminhão Munck
   const munckCard = document.createElement('div');
   munckCard.className = 'servico-card servico-card-munck';
-  munckCard.style.transitionDelay = `${servicos.length * 0.12}s`;
+  munckCard.style.transitionDelay = `${servicos.length * 0.1}s`;
   munckCard.innerHTML = `
-    <div class="servico-icon">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="1" y="13" width="15" height="8" rx="1"/>
-        <path d="M16 17h2l3-5V9h-5v8z"/>
-        <circle cx="5.5" cy="21" r="1.5"/><circle cx="18.5" cy="21" r="1.5"/>
-        <path d="M7 13V7l4-4h2v10"/>
-        <line x1="11" y1="3" x2="11" y2="13"/>
-      </svg>
+    <div class="servico-icon-wrap">
+      <i class="fas fa-truck-moving"></i>
     </div>
     <div class="munck-content">
       <div class="munck-badge">Disponível para Locação</div>
       <h3>Caminhão Munck</h3>
-      <p class="munck-desc">Disponibilizamos caminhão munck para locação, ideal para içamento e movimentação de cargas pesadas em obras e indústrias.</p>
+      <p class="munck-desc">Disponibilizamos caminhão munck para locação, ideal para içamento e movimentação de cargas pesadas em obras e indústrias com total segurança.</p>
     </div>
-    <a href="#contato" class="munck-cta">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Solicitar informações
+    <a href="https://wa.me/554331547568?text=Olá! Gostaria de informações sobre locação de Caminhão Munck." target="_blank" rel="noopener noreferrer" class="munck-cta">
+      <i class="fab fa-whatsapp"></i>
+      Solicitar via WhatsApp
     </a>
   `;
   grid.appendChild(munckCard);
@@ -546,7 +553,55 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ── Console Message ─────────────────────────────────────────
-console.log('%c🔧 Global Eletromecânica', 'font-size: 20px; font-weight: bold; color: #FF6B35;');
-console.log('%cManutenção e Montagem Industrial desde 2012', 'font-size: 12px; color: #999;');
-console.log('%c(43) 3154.7568 | globaleletromecanica@gmail.com', 'font-size: 11px; color: #666;');
+// ── Otimizações de Performance ──────────────────────────────
+function initPerformanceOptimizations() {
+  // Lazy loading para imagens fora da viewport
+  if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+      img.src = img.src;
+    });
+  } else {
+    // Fallback para navegadores antigos
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+  }
+
+  // Preload de fontes críticas
+  const fontPreload = document.createElement('link');
+  fontPreload.rel = 'preload';
+  fontPreload.as = 'font';
+  fontPreload.type = 'font/woff2';
+  fontPreload.crossOrigin = 'anonymous';
+  document.head.appendChild(fontPreload);
+
+  // Otimização de scroll com requestAnimationFrame
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        onScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+// ── Easter Egg — Console Art ────────────────────────────────
+console.log('%c╔═══════════════════════════════════════════════════════════╗', 'color: #F55A1E; font-weight: bold;');
+console.log('%c║                                                           ║', 'color: #F55A1E; font-weight: bold;');
+console.log('%c║     🔧  GLOBAL ELETROMECÂNICA                             ║', 'color: #F55A1E; font-weight: bold; font-size: 16px;');
+console.log('%c║                                                           ║', 'color: #F55A1E; font-weight: bold;');
+console.log('%c║     Manutenção e Montagem Industrial desde 2012          ║', 'color: #1A5FA8;');
+console.log('%c║     Cambé, Paraná — Brasil                                ║', 'color: #1A5FA8;');
+console.log('%c║                                                           ║', 'color: #F55A1E; font-weight: bold;');
+console.log('%c║     📞 (43) 3154.7568                                     ║', 'color: #64748B;');
+console.log('%c║     📧 globaleletromecanica@gmail.com                     ║', 'color: #64748B;');
+console.log('%c║                                                           ║', 'color: #F55A1E; font-weight: bold;');
+console.log('%c║     Desenvolvido por @dev.matheuss                        ║', 'color: #8A96A8; font-style: italic;');
+console.log('%c║     dev.matheusaugustoo@gmail.com                         ║', 'color: #8A96A8; font-style: italic;');
+console.log('%c║                                                           ║', 'color: #F55A1E; font-weight: bold;');
+console.log('%c╚═══════════════════════════════════════════════════════════╝', 'color: #F55A1E; font-weight: bold;');
+console.log('%c\n💡 Dica: Pressione Ctrl+Shift+I para explorar o código!\n', 'color: #25D366; font-weight: bold;');

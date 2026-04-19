@@ -1,12 +1,21 @@
 // ============================================================
-// Global Eletromecânica — script.js
-// Interatividade e Animações
+// Global Eletromecânica — script.js v3.0
+// Autor: @dev.matheuss | dev.matheusaugustoo@gmail.com
 // ============================================================
 
-// ── Estado Global ───────────────────────────────────────────
-const state = {
-  currentImageIndex: 0
-};
+// ── Inicialização ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initHeader();
+  initMobileMenu();
+  initSmoothScroll();
+  initScrollAnimations();
+  initCounters();
+  initHeroSlideshow();
+  initServicos();
+  initPortfolio();
+  initContactForm();
+  initScrollTop();
+});
 
 // ── Hero Slideshow Automático ───────────────────────────────
 function initHeroSlideshow() {
@@ -60,10 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSlideshow();
   initServicos();
   initPortfolio();
-  initLightbox();
   initContactForm();
   initScrollTop();
-  initActiveNav();
 });
 
 // ── Header Scroll Effect ────────────────────────────────────
@@ -75,46 +82,33 @@ function initHeader() {
 
 // ── Scroll to Top ───────────────────────────────────────────
 function initScrollTop() {
-  const scrollTopBtn = document.querySelector('.scroll-top');
-  if (!scrollTopBtn) return;
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  const btn = document.querySelector('.scroll-top');
+  if (!btn) return;
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// ── Active Navigation ───────────────────────────────────────
-function initActiveNav() {
-  // Apenas registra — o handler está no onScroll unificado
-}
+// ── Active Navigation — integrada no onScroll ───────────────
 
 // ── Handler de scroll unificado (passive para performance) ──
 function onScroll() {
-  const scrollY = window.pageYOffset;
-  const header  = document.getElementById('header');
+  const scrollY     = window.pageYOffset;
+  const header      = document.getElementById('header');
   const scrollTopBtn = document.querySelector('.scroll-top');
-  const sections  = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.nav a[href^="#"]');
 
-  // Header
+  // Header transparente → sólido
   header.classList.toggle('scrolled', scrollY > 80);
 
-  // Scroll-to-top button
-  if (scrollTopBtn) {
-    scrollTopBtn.classList.toggle('visible', scrollY > 500);
-  }
+  // Botão voltar ao topo
+  if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
 
-  // Nav ativa
-  const scrollPosition = scrollY + 100;
-  sections.forEach(section => {
-    const top    = section.offsetTop;
-    const height = section.offsetHeight;
-    const id     = section.getAttribute('id');
-    if (scrollPosition >= top && scrollPosition < top + height) {
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-      });
-    }
+  // Link ativo na navegação
+  const scrollPos = scrollY + 100;
+  document.querySelectorAll('section[id]').forEach(section => {
+    const id = section.getAttribute('id');
+    const inView = scrollPos >= section.offsetTop &&
+                   scrollPos < section.offsetTop + section.offsetHeight;
+    document.querySelectorAll(`.nav a[href="#${id}"]`)
+      .forEach(link => link.classList.toggle('active', inView));
   });
 }
 
@@ -342,13 +336,6 @@ function initPortfolio() {
 
   observeNewElements(grid.querySelectorAll('.portfolio-item'));
 }
-
-function renderPortfolioItems() {} // stub vazio — filtros removidos
-
-// ── Lightbox — removido (portfólio só tem hover visual) ─────
-function initLightbox() {}
-function closeLightbox() {}
-function navigateLightbox() {}
 
 // ── Formulário de Contato — Formspree ──────────────────────
 function initContactForm() {

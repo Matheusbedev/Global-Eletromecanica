@@ -1317,8 +1317,6 @@ section:not([data-animate]) .section-title span::after {
   transition: color 0.3s ease;
 }
 .footer-dev a:hover { color: var(--accent); }
-/* CNPJ discreto no endereço do footer */
-.footer-cnpj { margin-top: 8px; font-size: 0.8rem; opacity: 0.6; color: var(--gray-400); }
 /* WhatsApp Float */
 .whatsapp-float {
   position: fixed; bottom: 32px; right: 32px;
@@ -1454,23 +1452,9 @@ section:not([data-animate]) .section-title span::after {
   color: var(--accent);
 }
 
-/* Portfolio grid transition */
+/* Portfolio grid transition — mantido para animações JS */
 #portfolio-grid {
   transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.portfolio-item-category {
-  display: inline-block;
-  padding: 4px 12px;
-  background: rgba(255,107,53,0.2);
-  border: 1px solid var(--accent);
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
 }
 
 /* ── Responsive */

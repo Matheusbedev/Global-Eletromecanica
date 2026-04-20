@@ -301,17 +301,29 @@ p strong {
 }
 
 /* ── Header — Logo ── */
-.logo-img {
-  height: 46px;
-  width: auto;
-  display: block;
-  transition: transform .3s ease, filter .3s ease, opacity .3s ease;
-  filter: brightness(0) invert(1); /* logo branca sobre fundo escuro */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+  text-decoration: none;
 }
-.logo:hover .logo-img {
-  transform: scale(1.04);
-  opacity: .85;
+
+.logo-img {
+  /* Proporção original preservada — nunca forçar width + height juntos */
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* Logo sobre fundo escuro: inverter para branco */
   filter: brightness(0) invert(1);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.logo:hover .logo-img {
+  opacity: .82;
+  transform: scale(1.03);
 }
 
 .nav-list {
@@ -2694,23 +2706,32 @@ section { padding: 6rem 0; }
 
 /*
   Logo no footer — fundo transparente (32bpp ARGB).
-  A logo tem cores originais da marca sobre fundo transparente.
-  Para fundo escuro: clarear com brightness sem destruir as cores.
-  brightness(1.8) + contrast(0.9) = logo visível e natural sobre escuro.
+  brightness(0) invert(1) = branco puro, sem distorção.
+  Funciona com qualquer logo independente da cor original.
 */
+.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+}
+
 .footer-logo-img {
-  height: 60px;
+  /* Proporção original preservada */
+  max-height: 52px;
   width: auto;
+  height: auto;
   display: block;
-  filter: brightness(1.8) contrast(0.9) saturate(0.95);
-  opacity: 1;
-  transition: opacity .35s ease, transform .35s ease, filter .35s ease;
+  object-fit: contain;
+  /* Logo branca sobre fundo escuro do footer */
+  filter: brightness(0) invert(1);
+  opacity: .92;
+  transition: opacity .3s ease, transform .3s ease;
 }
 
 .footer-logo-link:hover .footer-logo-img {
   opacity: 1;
-  transform: scale(1.06);
-  filter: brightness(2) contrast(1) saturate(1.1) drop-shadow(0 0 14px rgba(245,90,30,.45));
+  transform: scale(1.04);
 }
 
 /* Separador laranja */
@@ -3097,36 +3118,32 @@ img {
   }
 }
 
-/* ── Otimizações específicas para logos ── */
+/* ── Logos — otimizações de qualidade ── */
 .logo-img,
 .footer-logo-img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Estados de foco acessíveis para logos */
-.logo:focus-visible,
-.footer-logo-link:focus-visible {
-  outline: 3px solid var(--accent-orange);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm);
-}
-
-/* Prevenção de seleção acidental das logos */
-.logo-img,
-.footer-logo-img {
+  /* Renderização suave — melhor para logos com curvas */
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  /* Aceleração de hardware sem distorção */
+  will-change: transform;
+  /* Sem seleção acidental */
   user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   pointer-events: none;
 }
 
+/* Restaurar pointer-events nos links */
 .logo,
 .footer-logo-link {
   pointer-events: auto;
+}
+
+/* Foco acessível */
+.logo:focus-visible,
+.footer-logo-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Estados de foco acessíveis */
@@ -3212,7 +3229,7 @@ html.js-loaded [data-animate] {
   section { padding: 64px 0; }
 
   /* Header */
-  .logo-img { height: 42px; }
+  .logo-img { max-height: 38px; }
   .nav-list {
     display: none;
     position: absolute; top: 76px; left: 0; right: 0;
@@ -3251,7 +3268,7 @@ html.js-loaded [data-animate] {
   /* Footer */
   .footer-links     { grid-template-columns: 1fr; }
   .footer-content   { grid-template-columns: 1fr; }
-  .footer-logo-img  { height: 48px; }
+  .footer-logo-img  { max-height: 44px; }
   .footer-bg-logo   { background-size: 400px auto; }
 
   /* Flutuantes */
@@ -3270,7 +3287,7 @@ html.js-loaded [data-animate] {
 @media (max-width: 480px) {
   .container        { padding: 0 1rem; }
   section           { padding: 3.25rem 0; }
-  .logo-img         { height: 2.375rem; }
+  .logo-img         { max-height: 36px; }
   .hero-content     { padding: 3rem 1rem 4.5rem; }
   .hero-title       { letter-spacing: -.5px; }
   .hero-stats       { border-radius: .625rem; }
@@ -3300,8 +3317,8 @@ html.js-loaded [data-animate] {
   .stat-number      { font-size: 1.75rem; }
   .servico-card     { padding: 1.25rem .875rem; }
   .contato-form     { padding: 1.25rem .875rem; }
-  .logo-img         { height: 2.125rem; }
-  .footer-logo-img  { height: 2.75rem; }
+  .logo-img         { max-height: 32px; }
+  .footer-logo-img  { max-height: 40px; }
   .section-title    { font-size: 1.5rem; }
 }
 

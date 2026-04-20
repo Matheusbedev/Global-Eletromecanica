@@ -55,8 +55,8 @@
   --shadow-orange: 0 8px 32px rgba(245,158,11,.28);
   --shadow-blue:   0 8px 32px rgba(10,31,68,.28);
   --shadow-glow:   0 0 40px rgba(245,158,11,.22), 0 0 80px rgba(245,158,11,.10);
-  --shadow-card:   0 2px 8px rgba(0,0,0,.05), 0 8px 32px rgba(0,0,0,.07);
-  --shadow-card-hover: 0 8px 24px rgba(0,0,0,.09), 0 24px 64px rgba(0,0,0,.12);
+  --shadow-card:   0 1px 2px rgba(0,0,0,.05), 0 8px 24px rgba(0,0,0,.08);
+  --shadow-card-hover: 0 1px 2px rgba(0,0,0,.05), 0 16px 48px rgba(0,0,0,.14);
 
   /* Tipografia */
   --font-head:     'Poppins', sans-serif;
@@ -104,6 +104,23 @@ img   { max-width: 100%; display: block; }
 a     { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
 a:hover { color: var(--color-accent); }
 ul    { list-style: none; }
+
+/* ── Acessibilidade — foco visível premium ── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ── Links com underline refinado ── */
+a:not(.btn):not(.nav-link):not(.logo):not(.footer-logo-link) {
+  text-underline-offset: 3px;
+}
+
+/* ── Imagens com content-visibility para performance ── */
+img {
+  content-visibility: auto;
+}
 
 /* ── Acessibilidade ── */
 .skip-link {
@@ -163,6 +180,15 @@ p {
   margin-bottom: 1rem;
   line-height: 1.75;
   font-size: 1rem;
+  max-width: 65ch;
+}
+
+/* Parágrafos dentro de containers de texto — sem limite */
+.section-desc,
+.hero-subtitle,
+.cta-banner-text p,
+.footer-brand p {
+  max-width: none;
 }
 
 /* Texto forte em parágrafos */
@@ -189,6 +215,7 @@ p strong {
   letter-spacing: .15px;
   position: relative;
   overflow: hidden;
+  min-height: 44px; /* acessibilidade — área mínima de toque */
 }
 
 /* Efeito shimmer em todos os botões */
@@ -261,16 +288,18 @@ p strong {
   box-shadow: 0 4px 16px rgba(10,31,68,.10);
 }
 
-/* ── Header — fundo azul naval corporativo ── */
+/* ── Header — glassmorphism premium ── */
 .header {
   position: fixed; top: 0; left: 0; right: 0;
-  background: var(--color-primary);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: rgba(10, 31, 68, 0.88);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,.08);
   z-index: 1000;
-  transition: all .4s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 2px 24px rgba(0,0,0,.25);
+  transition: background .4s cubic-bezier(.4,0,.2,1),
+              box-shadow .4s cubic-bezier(.4,0,.2,1),
+              backdrop-filter .4s ease;
+  box-shadow: 0 2px 24px rgba(0,0,0,.2);
 }
 
 /* Linha de acento âmbar no topo */
@@ -284,8 +313,8 @@ p strong {
 }
 
 .header.scrolled {
-  background: var(--color-primary);
-  box-shadow: 0 2px 32px rgba(0,0,0,.35);
+  background: rgba(10, 31, 68, 0.97);
+  box-shadow: 0 2px 32px rgba(0,0,0,.3);
   border-bottom-color: rgba(255,255,255,.06);
 }
 
@@ -1299,7 +1328,7 @@ section { padding: 6rem 0; }
 
 .servicos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 72px;
 }
@@ -2938,17 +2967,20 @@ section { padding: 6rem 0; }
   animation: fadeUp .8s cubic-bezier(.4,0,.2,1) both;
 }
 
-/* .reveal — scroll reveal premium com easing natural */
+/* .reveal — scroll reveal premium com blur + easing natural */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
+  filter: blur(4px);
+  will-change: transform, opacity, filter;
   transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform .7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity;
+              transform .7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter .7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 /* Variantes de delay para stagger elegante */
@@ -3099,33 +3131,14 @@ img {
   pointer-events: auto;
 }
 
-/* Foco acessível */
-.logo:focus-visible,
-.footer-logo-link:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-  border-radius: var(--radius-xs);
-}
-
-/* Estados de foco acessíveis */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 3px solid var(--accent-orange);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
 /* Seleção de texto personalizada */
 ::selection {
-  background: rgba(245,90,30,.18);
-  color: var(--text-dark);
+  background: rgba(245,158,11,.2);
+  color: var(--color-text);
 }
 ::-moz-selection {
-  background: rgba(245,90,30,.18);
-  color: var(--text-dark);
+  background: rgba(245,158,11,.2);
+  color: var(--color-text);
 }
 
 /* Scrollbar refinada */
@@ -3167,7 +3180,7 @@ html.js-loaded [data-animate] {
   .sobre-grid       { gap: 3.5rem; }
   .contato-grid     { gap: 2.5rem; }
   .footer-content   { gap: 2.5rem; }
-  .servicos-grid    { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .servicos-grid    { gap: 1.25rem; } /* grid fluido — auto-fit já adapta */
   .servico-card-munck {
     grid-column: 1 / -1;
     flex-direction: row;

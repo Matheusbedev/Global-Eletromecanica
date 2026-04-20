@@ -312,10 +312,7 @@ function initServicos() {
       <i class="fas fa-truck-moving"></i>
     </div>
     <div class="munck-content">
-      <div class="munck-badge">
-        <span></span>
-        Disponível para Locação
-      </div>
+      <div class="munck-badge">Disponível para Locação</div>
       <h3>Caminhão Munck</h3>
       <p class="munck-desc">Disponibilizamos caminhão munck para locação, ideal para içamento e movimentação de cargas pesadas em obras e indústrias com total segurança e eficiência operacional.</p>
     </div>

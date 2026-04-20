@@ -124,7 +124,7 @@ ul    { list-style: none; }
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-head);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--color-primary);
   letter-spacing: -.3px;
 }
@@ -212,11 +212,11 @@ p strong {
 .btn-primary:hover {
   background: var(--color-accent-hover);
   color: var(--color-text);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 28px rgba(245,158,11,.38);
 }
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(.98);
   box-shadow: 0 2px 8px rgba(245,158,11,.25);
 }
 
@@ -406,7 +406,8 @@ p strong {
 .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Main offset ── */
-main { margin-top: 70px; }
+:root { --header-height: 70px; }
+main { margin-top: var(--header-height); }
 
 /* ══════════════════════════════════════════════════════════
    HERO — Impacto máximo, identidade industrial premium
@@ -451,7 +452,7 @@ main { margin-top: 70px; }
       transparent 45%);
 }
 
-/* Acento laranja vertical — marca industrial */
+/* Acento âmbar vertical — marca industrial */
 .hero-overlay::before {
   content: '';
   position: absolute;
@@ -460,11 +461,11 @@ main { margin-top: 70px; }
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    var(--accent-orange) 25%,
-    var(--accent-orange) 75%,
+    var(--color-accent) 25%,
+    var(--color-accent) 75%,
     transparent 100%
   );
-  opacity: .9;
+  opacity: .85;
 }
 
 /* Grade técnica sutil */
@@ -492,8 +493,8 @@ main { margin-top: 70px; }
 }
 .hero-dot.active {
   width: 36px; border-radius: 2px;
-  background: var(--accent-orange);
-  box-shadow: 0 0 16px rgba(245,90,30,.7);
+  background: var(--color-accent);
+  box-shadow: 0 0 16px rgba(var(--color-accent-rgb),.6);
 }
 .hero-dot:hover { background: rgba(255,255,255,.6); }
 
@@ -521,13 +522,13 @@ main { margin-top: 70px; }
 }
 .badge-dot {
   width: 6px; height: 6px;
-  background: var(--accent-orange); border-radius: 50%;
+  background: var(--color-accent); border-radius: 50%;
   animation: bPulse 2s ease infinite;
 }
 @keyframes bPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(245,90,30,.7); }
-  70%  { box-shadow: 0 0 0 8px rgba(245,90,30,0); }
-  100% { box-shadow: 0 0 0 0 rgba(245,90,30,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb),.7); }
+  70%  { box-shadow: 0 0 0 8px rgba(var(--color-accent-rgb),0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb),0); }
 }
 
 /* Título */
@@ -2239,9 +2240,9 @@ section { padding: 6rem 0; }
 .cta-banner {
   background: linear-gradient(
     135deg,
-    var(--accent-orange) 0%,
-    #d94d15 40%,
-    #b83d0f 100%
+    var(--color-primary) 0%,
+    var(--color-primary-light) 50%,
+    var(--color-primary) 100%
   );
   padding: 5rem 0;
   position: relative;
@@ -2326,12 +2327,12 @@ section { padding: 6rem 0; }
 }
 
 .cta-banner-btn-primary {
-  background: #fff;
-  color: var(--accent-orange);
+  background: var(--color-accent);
+  color: var(--color-text);
   font-weight: 700;
   padding: 1rem 2rem;
   border-radius: var(--radius-sm);
-  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  box-shadow: 0 4px 20px rgba(245,158,11,.35);
   transition: all .3s var(--ease);
   border: none;
   font-family: var(--font-head);
@@ -2339,19 +2340,19 @@ section { padding: 6rem 0; }
 }
 
 .cta-banner-btn-primary:hover {
-  background: var(--off-white);
-  color: var(--accent-orange);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(0,0,0,.3);
+  background: var(--color-accent-hover);
+  color: var(--color-text);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(245,158,11,.5);
 }
 
 .cta-banner-btn-wa {
-  background: rgba(255,255,255,.15);
+  background: rgba(255,255,255,.12);
   color: #fff;
   font-weight: 700;
   padding: 1rem 2rem;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255,255,255,.4);
+  border: 1.5px solid rgba(255,255,255,.35);
   backdrop-filter: blur(12px);
   transition: all .3s var(--ease);
   font-family: var(--font-head);
@@ -2359,10 +2360,10 @@ section { padding: 6rem 0; }
 }
 
 .cta-banner-btn-wa:hover {
-  background: rgba(255,255,255,.25);
-  border-color: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.65);
   color: #fff;
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.02);
 }
 
 /* Responsividade CTA Banner */
@@ -2937,18 +2938,20 @@ section { padding: 6rem 0; }
   animation: fadeUp .8s cubic-bezier(.4,0,.2,1) both;
 }
 
-/* .reveal — alias compatível com padrão IntersectionObserver */
+/* .reveal — scroll reveal premium com easing natural */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  transform: translateY(32px);
+  transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform .7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
 }
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Variantes de delay para stagger */
+/* Variantes de delay para stagger elegante */
 .reveal[data-delay="100"] { transition-delay: .1s; }
 .reveal[data-delay="200"] { transition-delay: .2s; }
 .reveal[data-delay="300"] { transition-delay: .3s; }

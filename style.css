@@ -83,7 +83,12 @@
   --radius-full:   9999px;
 }
 
-/* ── Reset ─────────────────────────────────────────────────── */
+/* ── Variáveis derivadas para uso inline ── */
+:root {
+  /* RGB dos tokens para uso em rgba() */
+  --color-accent-rgb:   245, 158, 11;
+  --color-primary-rgb:  10, 31, 68;
+}
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html  { scroll-behavior: smooth; font-size: 16px; }
 body  {
@@ -96,8 +101,8 @@ body  {
   -moz-osx-font-smoothing: grayscale;
 }
 img   { max-width: 100%; display: block; }
-a     { color: var(--primary-blue); text-decoration: none; transition: var(--transition); }
-a:hover { color: var(--accent-orange); }
+a     { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+a:hover { color: var(--color-accent); }
 ul    { list-style: none; }
 
 /* ── Acessibilidade ── */
@@ -530,7 +535,7 @@ main { margin-top: 70px; }
 /* Linha laranja */
 .hero-title-line {
   width: 80px; height: 3px;
-  background: linear-gradient(90deg, var(--accent-orange), rgba(245,90,30,.15));
+  background: linear-gradient(90deg, var(--color-accent), rgba(var(--color-accent-rgb),.15));
   border-radius: 2px;
   margin: 28px 0 26px;
   animation: hIn .9s .26s ease both;
@@ -1104,15 +1109,15 @@ section { padding: 6rem 0; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-orange), var(--primary-blue));
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .4s var(--ease);
 }
 
 .pilar-item:hover {
-  border-color: rgba(26,95,168,.2);
-  background: rgba(26,95,168,.03);
+  border-color: rgba(var(--color-primary-rgb),.2);
+  background: rgba(var(--color-primary-rgb),.03);
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0,0,0,.07);
 }
@@ -1124,8 +1129,8 @@ section { padding: 6rem 0; }
 .pilar-icon {
   width: 40px; height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(245,90,30,.12), rgba(245,90,30,.06));
-  border: 1.5px solid rgba(245,90,30,.2);
+  background: rgba(var(--color-accent-rgb),.1);
+  border: 1.5px solid rgba(var(--color-accent-rgb),.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1134,19 +1139,20 @@ section { padding: 6rem 0; }
 }
 
 .pilar-item:hover .pilar-icon {
-  background: linear-gradient(135deg, var(--accent-orange), #FF7A45);
+  background: var(--color-accent);
   border-color: transparent;
   transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 6px 20px rgba(var(--color-accent-rgb),.35);
 }
 
 .pilar-icon i {
   font-size: .95rem;
-  color: var(--accent-orange);
+  color: var(--color-accent);
   transition: color .3s ease;
 }
 
 .pilar-item:hover .pilar-icon i {
-  color: #fff;
+  color: var(--color-text);
 }
 
 .pilar-text {
@@ -1158,14 +1164,14 @@ section { padding: 6rem 0; }
 .pilar-text strong {
   font-size: .9rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--color-primary);
   font-family: var(--font-head);
   line-height: 1.3;
 }
 
 .pilar-text span {
   font-size: .8rem;
-  color: var(--text-muted);
+  color: var(--color-text-light);
   line-height: 1.4;
 }
 
@@ -1224,7 +1230,7 @@ section { padding: 6rem 0; }
   opacity: .6;
 }
 
-/* Linha de acento superior — identidade laranja */
+/* Linha de acento superior — identidade âmbar */
 .servicos::after {
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
@@ -1232,11 +1238,11 @@ section { padding: 6rem 0; }
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--accent-orange) 20%,
-    var(--accent-orange) 80%,
+    var(--color-accent) 20%,
+    var(--color-accent) 80%,
     transparent 100%
   );
-  box-shadow: 0 0 20px rgba(245,90,30,.5);
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb),.4);
 }
 
 /* Efeito de luz radial — profundidade cinematográfica */
@@ -1769,13 +1775,12 @@ section { padding: 6rem 0; }
   opacity: .8;
 }
 
-/* Ícone da etapa */
 .processo-icon {
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--gray-200);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1788,15 +1793,15 @@ section { padding: 6rem 0; }
 
 .processo-icon i {
   font-size: 1.1rem;
-  color: var(--primary-blue);
+  color: var(--color-primary);
   transition: color .35s ease;
 }
 
 .processo-item:hover .processo-icon {
-  background: var(--primary-blue);
-  border-color: var(--primary-blue);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(26,95,168,.3);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb),.3);
 }
 
 .processo-item:hover .processo-icon i {
@@ -2940,7 +2945,7 @@ section { padding: 6rem 0; }
 /* ── Scroll to top ─────────────────────────────────────────── */
 .scroll-top {
   position: fixed; bottom: 96px; right: 28px;
-  width: 46px; height: 46px; background: var(--primary-blue); color: #fff;
+  width: 46px; height: 46px; background: var(--color-primary); color: #fff;
   border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem; cursor: pointer; box-shadow: var(--shadow-md); z-index: 999;
   opacity: 0; visibility: hidden; transition: var(--transition);
@@ -2952,6 +2957,24 @@ section { padding: 6rem 0; }
 .fade-in-up {
   animation: fadeUp .8s cubic-bezier(.4,0,.2,1) both;
 }
+
+/* .reveal — alias compatível com padrão IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variantes de delay para stagger */
+.reveal[data-delay="100"] { transition-delay: .1s; }
+.reveal[data-delay="200"] { transition-delay: .2s; }
+.reveal[data-delay="300"] { transition-delay: .3s; }
+.reveal[data-delay="400"] { transition-delay: .4s; }
+.reveal[data-delay="500"] { transition-delay: .5s; }
 
 @keyframes fadeUp {
   from {

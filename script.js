@@ -183,14 +183,26 @@ function observeNewElements(elements) {
 }
 
 function initScrollAnimations() {
-  // Observar elementos estáticos
+  // Observer para fade-in-up (elementos estáticos)
   document.querySelectorAll(
-    '.info-card, .diferencial-item, .pilar-item, .stat-card, .portfolio-item, .cta-banner-inner'
+    '.info-card, .diferencial-item, .stat-card, .portfolio-item, .cta-banner-inner'
   ).forEach(el => {
     scrollObserver.observe(el);
   });
 
-  // Observar elementos com data-animate
+  // Observer para .reveal (padrão semântico)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Observer para data-animate (stagger com delay)
   const dataAnimateObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

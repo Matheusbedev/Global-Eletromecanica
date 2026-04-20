@@ -82,10 +82,6 @@
             
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-logo" data-aos="fade-down">
-                        <img src="LOGO GLOBAL ELETROMECANICA/Global Logo.png" alt="Global Eletromecânica">
-                    </div>
-
                     <div class="hero-badge" data-aos="fade-up">
                         <span class="badge-dot"></span>
                         Cambé, Paraná — Desde 2012
@@ -410,15 +406,30 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+
+        <!-- Fundo: logo da empresa em marca d'água + overlay de cor -->
+        <div class="footer-bg" aria-hidden="true">
+            <div class="footer-bg-logo"></div>
+            <div class="footer-bg-overlay"></div>
+        </div>
+
+        <div class="container footer-inner">
             <div class="footer-content">
+
+                <!-- Brand -->
                 <div class="footer-brand">
-                    <a href="#home" class="logo">
-                        <img src="LOGO GLOBAL ELETROMECANICA/Global Logo.png" alt="Global Eletromecânica">
+                    <a href="#home" class="footer-logo-link" aria-label="Global Eletromecânica — Início">
+                        <img
+                            src="LOGO GLOBAL ELETROMECANICA/Global Logo.png"
+                            alt="Global Eletromecânica"
+                            class="footer-logo-img"
+                        >
                     </a>
-                    <p>Manutenção e Montagem Industrial desde 2012. Qualidade técnica, segurança e comprometimento.</p>
+                    <span class="footer-brand-divider" aria-hidden="true"></span>
+                    <p>Manutenção e Montagem Industrial desde 2012.<br>Qualidade técnica, segurança e comprometimento.</p>
                 </div>
-                
+
+                <!-- Links -->
                 <div class="footer-links">
                     <div class="footer-col">
                         <h4>Navegação</h4>
@@ -430,27 +441,27 @@
                             <li><a href="#contato">Contato</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-col">
                         <h4>Contato</h4>
                         <ul>
-                            <li><a href="tel:+554331547568">(43) 3154.7568</a></li>
-                            <li><a href="mailto:globaleletromecanica@gmail.com">globaleletromecanica@gmail.com</a></li>
-                            <li><a href="https://wa.me/554331547568" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                            <li><a href="tel:+554331547568"><i class="fas fa-phone"></i>(43) 3154.7568</a></li>
+                            <li><a href="mailto:globaleletromecanica@gmail.com"><i class="fas fa-envelope"></i>globaleletromecanica@gmail.com</a></li>
+                            <li><a href="https://wa.me/554331547568" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i>WhatsApp</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="footer-col">
                         <h4>Redes Sociais</h4>
                         <ul class="social-links">
                             <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2026 Global Eletromecânica. Todos os direitos reservados.</p>
                 <p>CNPJ 15.430.742/0001-24 — Cambé, Paraná — Brasil</p>

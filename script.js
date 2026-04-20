@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDepoimentos();
   initContactForm();
   initScrollTop();
+  initFooterSlideshow();
   initPerformanceOptimizations();
 });
 
@@ -68,10 +69,16 @@ function initHeader() {
 }
 
 // ── Scroll to Top ───────────────────────────────────────────
+// ── Scroll to Top ───────────────────────────────────────────
 function initScrollTop() {
   const btn = document.querySelector('.scroll-top');
   if (!btn) return;
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// ── Footer Slideshow — removido (fundo agora é marca d'água estática) ──
+function initFooterSlideshow() {
+  /* não há mais slides no footer */
 }
 
 // ── Active Navigation — integrada no onScroll ───────────────
@@ -278,7 +285,6 @@ function initServicos() {
     card.className = 'servico-card';
     card.style.transitionDelay = `${i * 0.1}s`;
     card.innerHTML = `
-      <span class="servico-num">0${i + 1}</span>
       <div class="servico-icon-wrap">
         <i class="fas ${s.icon}"></i>
       </div>

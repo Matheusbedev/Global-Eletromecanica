@@ -1912,6 +1912,163 @@ section { padding: 6rem 0; }
   color: var(--text-muted);
 }
 
+/* ══════════════════════════════════════════════════════════
+   CTA BANNER — Conversão de alta intensidade
+   ══════════════════════════════════════════════════════════ */
+.cta-banner {
+  background: linear-gradient(
+    135deg,
+    var(--accent-orange) 0%,
+    #d94d15 40%,
+    #b83d0f 100%
+  );
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Textura industrial sutil */
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Luz radial central */
+.cta-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta-banner-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.cta-banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cta-banner-label {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.75);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: .75rem;
+}
+
+.cta-banner-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -.5px;
+  margin-bottom: .75rem;
+}
+
+.cta-banner-title .highlight {
+  color: rgba(255,255,255,.9);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.4);
+  text-underline-offset: 4px;
+}
+
+.cta-banner-text p {
+  color: rgba(255,255,255,.75);
+  font-size: 1rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.cta-banner-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.cta-banner-btn-primary {
+  background: #fff;
+  color: var(--accent-orange);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  transition: all .3s var(--ease);
+  border: none;
+  font-family: var(--font-head);
+  font-size: .95rem;
+}
+
+.cta-banner-btn-primary:hover {
+  background: var(--off-white);
+  color: var(--accent-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.3);
+}
+
+.cta-banner-btn-wa {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255,255,255,.4);
+  backdrop-filter: blur(12px);
+  transition: all .3s var(--ease);
+  font-family: var(--font-head);
+  font-size: .95rem;
+}
+
+.cta-banner-btn-wa:hover {
+  background: rgba(255,255,255,.25);
+  border-color: rgba(255,255,255,.7);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Responsividade CTA Banner */
+@media (max-width: 900px) {
+  .cta-banner-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .cta-banner-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-banner { padding: 3.5rem 0; }
+  .cta-banner-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-banner-btn-primary,
+  .cta-banner-btn-wa {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ── Contato ───────────────────────────────────────────────── */
 .contato {
   background: linear-gradient(to bottom, var(--off-white) 0%, var(--white) 100%);

@@ -183,8 +183,10 @@ function observeNewElements(elements) {
 }
 
 function initScrollAnimations() {
-  // Observar elementos estáticos (info-card, diferencial-item)
-  document.querySelectorAll('.info-card, .diferencial-item').forEach(el => {
+  // Observar elementos estáticos
+  document.querySelectorAll(
+    '.info-card, .diferencial-item, .pilar-item, .stat-card, .portfolio-item, .cta-banner-inner'
+  ).forEach(el => {
     scrollObserver.observe(el);
   });
 
@@ -204,7 +206,8 @@ function initScrollAnimations() {
 
 // ── Contadores Animados ─────────────────────────────────────
 function initCounters() {
-  const counters = document.querySelectorAll('.counter[data-target]');
+  // Seleciona tanto .counter quanto .counter-hero
+  const counters = document.querySelectorAll('.counter[data-target], .counter-hero[data-target]');
   if (!counters.length) return;
 
   const counterObserver = new IntersectionObserver((entries) => {

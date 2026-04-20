@@ -310,11 +310,7 @@ p strong {
 }
 
 .logo-img {
-  /*
-    Global Logo.png — logo com fundo transparente, texto preto.
-    Sem filtro — exibir as cores originais da logo.
-  */
-  max-height: 44px;
+  max-height: 60px;
   width: auto;
   height: auto;
   display: block;
@@ -2718,7 +2714,7 @@ section { padding: 6rem 0; }
 }
 
 .footer-logo-img {
-  max-height: 52px;
+  max-height: 60px;
   width: auto;
   height: auto;
   display: block;
@@ -2811,43 +2807,6 @@ section { padding: 6rem 0; }
 
 .footer-col a:hover i {
   opacity: 1;
-}
-
-/* ── Redes sociais ── */
-.social-links {
-  display: flex;
-  gap: .625rem;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
-
-.social-links li {
-  margin: 0 !important;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px; height: 40px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--radius-sm);
-  color: rgba(255,255,255,.45);
-  font-size: .9rem;
-  padding: 0;
-  gap: 0;
-  transition: all .3s var(--ease);
-}
-
-.social-links a:hover {
-  background: var(--accent-orange);
-  border-color: var(--accent-orange);
-  color: #fff;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(245,90,30,.4);
-  padding-left: 0;
 }
 
 /* ── Rodapé inferior ── */
@@ -3228,7 +3187,7 @@ html.js-loaded [data-animate] {
   section { padding: 64px 0; }
 
   /* Header */
-  .logo-img { max-height: 38px; }
+  .logo-img { max-height: 44px; }
   .nav-list {
     display: none;
     position: absolute; top: 76px; left: 0; right: 0;
@@ -3286,7 +3245,7 @@ html.js-loaded [data-animate] {
 @media (max-width: 480px) {
   .container        { padding: 0 1rem; }
   section           { padding: 3.25rem 0; }
-  .logo-img         { max-height: 36px; }
+  .logo-img         { max-height: 40px; }
   .hero-content     { padding: 3rem 1rem 4.5rem; }
   .hero-title       { letter-spacing: -.5px; }
   .hero-stats       { border-radius: .625rem; }
@@ -3316,8 +3275,8 @@ html.js-loaded [data-animate] {
   .stat-number      { font-size: 1.75rem; }
   .servico-card     { padding: 1.25rem .875rem; }
   .contato-form     { padding: 1.25rem .875rem; }
-  .logo-img         { max-height: 32px; }
-  .footer-logo-img  { max-height: 40px; }
+  .logo-img         { max-height: 38px; }
+  .footer-logo-img  { max-height: 44px; }
   .section-title    { font-size: 1.5rem; }
 }
 

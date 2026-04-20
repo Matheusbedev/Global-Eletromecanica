@@ -758,7 +758,7 @@ section { padding: 96px 0; }
 
 .servicos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 72px;
 }
@@ -1001,24 +1001,30 @@ section { padding: 96px 0; }
   color: #fff;
 }
 
-/* Card Munck — destaque premium especial */
+/* Card Munck — ocupa linha inteira, layout horizontal */
 .servico-card-munck {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
   background: linear-gradient(
-    145deg,
-    rgba(245,90,30,.12) 0%,
-    rgba(26,95,168,.08) 100%
+    135deg,
+    rgba(245,90,30,.14) 0%,
+    rgba(26,95,168,.10) 60%,
+    rgba(245,90,30,.06) 100%
   );
-  border-color: rgba(245,90,30,.25);
+  border-color: rgba(245,90,30,.3);
   box-shadow:
-    0 8px 32px rgba(245,90,30,.25),
+    0 8px 32px rgba(245,90,30,.2),
     inset 0 1px 0 rgba(255,255,255,.1);
+  padding: 40px 48px;
 }
 
 .servico-card-munck:hover {
   border-color: rgba(245,90,30,.5);
   box-shadow:
-    0 32px 80px rgba(245,90,30,.35),
-    0 0 0 1px rgba(245,90,30,.4),
+    0 24px 64px rgba(245,90,30,.3),
+    0 0 0 1px rgba(245,90,30,.35),
     inset 0 1px 0 rgba(255,255,255,.15);
 }
 
@@ -1029,6 +1035,8 @@ section { padding: 96px 0; }
     rgba(245,90,30,.12) 100%
   );
   border-color: rgba(245,90,30,.4);
+  flex-shrink: 0;
+  margin-bottom: 0;
 }
 
 .servico-card-munck h3 {
@@ -1037,6 +1045,7 @@ section { padding: 96px 0; }
 
 .munck-content {
   flex: 1;
+  min-width: 0;
 }
 
 .munck-badge {
@@ -1081,7 +1090,7 @@ section { padding: 96px 0; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(135deg, #25D366 0%, #1ead4f 100%);ent(135deg, #25D366 0%, #1ead4f 100%);
+  background: linear-gradient(135deg, #25D366 0%, #1ead4f 100%);
   color: #fff;
   padding: 15px 28px;
   border-radius: 10px;
@@ -1089,13 +1098,15 @@ section { padding: 96px 0; }
   font-size: .92rem;
   transition: all .4s cubic-bezier(.4,0,.2,1);
   align-self: flex-start;
-  margin-top: 28px;
+  margin-top: 0;
+  flex-shrink: 0;
   box-shadow:
     0 6px 24px rgba(37,211,102,.4),
     inset 0 1px 0 rgba(255,255,255,.2);
   letter-spacing: .3px;
   font-family: var(--font-head);
   border: 1px solid rgba(255,255,255,.15);
+  white-space: nowrap;
 }
 
 .munck-cta:hover {
@@ -1112,13 +1123,51 @@ section { padding: 96px 0; }
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
 }
 
+/* ── Responsividade dos Serviços ── */
+
+/* Tablet largo: 3 colunas → 2 colunas, Munck span 2 */
+@media (max-width: 1024px) {
+  .servicos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .servico-card-munck {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    padding: 36px 40px;
+    gap: 32px;
+  }
+}
+
+/* Tablet: 2 colunas → 1 coluna, Munck volta ao layout vertical */
 @media (max-width: 768px) {
   .servicos { padding: 72px 0; }
-  .servicos-grid { grid-template-columns: 1fr; gap: 14px; }
+  .servicos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   .servico-card { padding: 32px 24px; }
+  .servico-card-munck {
+    grid-column: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+    gap: 0;
+  }
+  .servico-card-munck .servico-icon-wrap {
+    margin-bottom: 28px;
+  }
+  .munck-cta {
+    margin-top: 24px;
+    width: 100%;
+    justify-content: center;
+  }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .servico-card { padding: 28px 20px; }
+  .servico-card-munck { padding: 28px 20px; }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -2216,7 +2265,7 @@ html.js-loaded [data-animate] {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   RESPONSIVIDADE COMPLETA — auditada para todos os dispositivos
+   RESPONSIVIDADE COMPLETA
    320px · 480px · 600px · 768px · 900px · 1024px · 1200px+
    ═══════════════════════════════════════════════════════════ */
 
@@ -2229,31 +2278,20 @@ html.js-loaded [data-animate] {
 
 /* ── Tablet (≤ 900px) ── */
 @media (max-width: 900px) {
-  /* Sobre */
   .sobre-grid       { grid-template-columns: 1fr; gap: 56px; }
-
-  /* Contato */
   .contato-grid     { grid-template-columns: 1fr; gap: 40px; }
-
-  /* Footer */
   .footer-content   { grid-template-columns: 1fr; gap: 40px; }
   .footer-links     { grid-template-columns: repeat(2, 1fr); }
-
-  /* Portfolio */
   .portfolio-grid   { grid-template-columns: repeat(2, 1fr); }
-
-  /* Parceiros */
   .parceiro-item    { flex: 0 0 140px; height: 72px; }
 }
 
 /* ── Mobile (≤ 768px) ── */
 @media (max-width: 768px) {
-  /* Seções gerais */
   section { padding: 64px 0; }
 
-  /* Header / Nav */
+  /* Header */
   .logo-img { height: 42px; }
-  
   .nav-list {
     display: none;
     position: absolute; top: 76px; left: 0; right: 0;
@@ -2267,9 +2305,20 @@ html.js-loaded [data-animate] {
   .menu-toggle   { display: flex; }
 
   /* Hero */
-  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-content {
+    text-align: center; margin: 0 auto;
+    padding: 80px 20px 100px;
+  }
+  .hero-title-line  { margin: 24px auto; }
+  .hero-subtitle    { margin-left: auto; margin-right: auto; }
+  .hero-actions     { flex-direction: column; align-items: center; justify-content: center; }
   .hero-actions .btn { width: 100%; max-width: 320px; justify-content: center; }
-  .hero-stats   { flex-wrap: wrap; }
+  .hero-stats       { flex-wrap: wrap; justify-content: center; }
+  .stat + .stat     { border-left: none; border-top: 1px solid rgba(255,255,255,.08); }
+  .hero-overlay {
+    background:
+      linear-gradient(to bottom, rgba(6,14,26,.92) 0%, rgba(6,14,26,.7) 50%, rgba(6,14,26,.95) 100%);
+  }
 
   /* Sobre */
   .sobre-img-float  { width: 44%; bottom: -16px; right: -12px; }
@@ -2278,8 +2327,7 @@ html.js-loaded [data-animate] {
   .sobre-actions .btn,
   .sobre-actions .btn-outline-dark { width: 100%; justify-content: center; }
 
-  /* Serviços */
-  .servicos-grid    { grid-template-columns: 1fr; gap: 14px; }
+  /* Portfolio */
   .portfolio-grid   { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   /* Contato */
@@ -2298,70 +2346,45 @@ html.js-loaded [data-animate] {
 
 /* ── Mobile médio (≤ 600px) ── */
 @media (max-width: 600px) {
-  /* Sobre */
   .sobre-img-float  { display: none; }
   .sobre-badge      { top: 12px; left: 12px; }
-
-  /* Parceiros */
   .parceiro-item    { flex: 0 0 120px; height: 64px; padding: 10px 12px; }
   .carousel-track   { gap: 16px; }
-
-  /* Serviços */
   .servico-card     { padding: 28px 20px; }
+  .servico-card-munck { padding: 28px 20px; }
 }
 
 /* ── Mobile pequeno (≤ 480px) ── */
 @media (max-width: 480px) {
   .container        { padding: 0 16px; }
   section           { padding: 52px 0; }
-
-  /* Header */
   .logo-img         { height: 38px; }
-
-  /* Hero */
   .hero-content     { padding: 48px 16px 72px; }
   .hero-title       { letter-spacing: -.5px; }
   .hero-stats       { border-radius: 10px; }
   .stat             { padding: 16px 20px; }
-
-  /* Sobre */
   .sobre            { padding: 52px 0; }
-
-  /* Serviços */
   .servicos         { padding: 60px 0; }
-
-  /* Portfolio */
   .portfolio-grid   { grid-template-columns: 1fr; gap: 12px; }
-
-  /* Contato */
   .contato-form     { padding: 24px 20px; }
   .mapa-container iframe { height: 260px; }
-
-  /* Footer */
   .footer-bottom    { padding: 16px 0; }
   .footer-dev       { font-size: .75rem; }
 }
 
 /* ── Telas muito pequenas (≤ 360px) ── */
 @media (max-width: 360px) {
-  .hero-title       { font-size: 1.9rem; }
-  .hero-actions .btn { max-width: 100%; }
-  .stat-number      { font-size: 2rem; }
-  .servico-card     { padding: 24px 16px; }
-  .contato-form     { padding: 20px 16px; }
-  
-  /* Logos menores em telas muito pequenas */
-  .logo-img         { height: 36px; }
-  .footer-logo-img  { height: 48px; }
-  .footer-bg-logo   { background-size: 300px auto; }
-}
-/* ── Responsividade final ── */
-@media (max-width: 320px) {
   .container        { padding: 0 12px; }
   .hero-content     { padding: 40px 12px 60px; }
   .hero-title       { font-size: 1.7rem; }
+  .hero-actions .btn { max-width: 100%; }
+  .stat-number      { font-size: 2rem; }
   .servico-card     { padding: 20px 12px; }
+  .servico-card-munck { padding: 20px 12px; }
   .contato-form     { padding: 16px 12px; }
+  .logo-img         { height: 36px; }
+  .footer-logo-img  { height: 44px; }
+  .footer-bg-logo   { background-size: 280px auto; }
 }
 
 /* ── Fim do arquivo ── */

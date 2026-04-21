@@ -1,7 +1,28 @@
 User-agent: *
-Disallow: /site antigo/
-Disallow: /prints_carta/
-Disallow: /FOTOS SERVICO/
 Allow: /
 
-Sitemap: https://www.globaleletromecanica.com.br/sitemap.xml
+# Permitir recursos importantes
+Allow: /style.css
+Allow: /script.js
+Allow: /manifest.json
+Allow: /LOGO*
+Allow: /FOTOS*
+
+# Bloquear arquivos desnecessários
+Disallow: /sw.js
+Disallow: /*.log$
+Disallow: /private/
+Disallow: /site antigo/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /.kiro/
+
+# Crawl-delay para bots mais agressivos
+User-agent: Baiduspider
+Crawl-delay: 10
+
+User-agent: YandexBot
+Crawl-delay: 10
+
+# Sitemap
+Sitemap: https://globaleletromecanica.com.br/sitemap.xml

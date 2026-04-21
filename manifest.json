@@ -1,0 +1,65 @@
+{
+  "name": "Global Eletromecânica - Manutenção e Montagem Industrial",
+  "short_name": "Global Eletromecânica",
+  "description": "Manutenção industrial, montagem e instalações eletromecânicas em Cambé, PR. +12 anos de experiência, +100 projetos realizados.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1F44",
+  "theme_color": "#0A1F44",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "LOGO GLOBAL ELETROMECANICA/Globo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "LOGO GLOBAL ELETROMECANICA/Global Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Solicitar Orçamento",
+      "short_name": "Orçamento",
+      "description": "Solicite um orçamento para seus projetos industriais",
+      "url": "/#contato",
+      "icons": [
+        {
+          "src": "LOGO GLOBAL ELETROMECANICA/Globo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Fale diretamente com nossa equipe técnica",
+      "url": "https://wa.me/554331547568",
+      "icons": [
+        {
+          "src": "LOGO GLOBAL ELETROMECANICA/Globo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Nossos Serviços",
+      "short_name": "Serviços",
+      "description": "Conheça todos os nossos serviços industriais",
+      "url": "/#servicos",
+      "icons": [
+        {
+          "src": "LOGO GLOBAL ELETROMECANICA/Globo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

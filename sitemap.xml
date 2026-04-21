@@ -1,1 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.globaleletromecanica.com.br/</loc><lastmod>2026-04-19</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://globaleletromecanica.com.br/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://globaleletromecanica.com.br/LOGO GLOBAL ELETROMECANICA/Global Logo.png</image:loc>
+      <image:title>Global Eletromecânica - Logo</image:title>
+      <image:caption>Logo da Global Eletromecânica - Manutenção e Montagem Industrial</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Seções da Página -->
+  <url>
+    <loc>https://globaleletromecanica.com.br/#sobre</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://globaleletromecanica.com.br/#servicos</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://globaleletromecanica.com.br/#processo</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://globaleletromecanica.com.br/#portfolio</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://globaleletromecanica.com.br/#contato</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Manifest PWA -->
+  <url>
+    <loc>https://globaleletromecanica.com.br/manifest.json</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

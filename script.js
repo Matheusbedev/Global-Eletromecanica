@@ -16,6 +16,7 @@ const portfolio = [
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  initHeroSlideshow();
   initMobileMenu();
   initScrollEffects();
   initPortfolio();
@@ -23,6 +24,45 @@ document.addEventListener('DOMContentLoaded', function() {
   initContactForm();
   initSmoothScroll();
 });
+
+// ── Hero Slideshow ─────────────────────────────────────────
+function initHeroSlideshow() {
+  const bgSlides    = document.querySelectorAll('.hero-slide');
+  const visualImgs  = document.querySelectorAll('.hero-visual-img');
+  const dots        = document.querySelectorAll('.hero-dot');
+  const total       = bgSlides.length;
+  let current       = 0;
+  let timer         = null;
+
+  if (!total) return;
+
+  function goTo(index) {
+    // Remove active de todos
+    bgSlides[current].classList.remove('active');
+    if (visualImgs[current]) visualImgs[current].classList.remove('active');
+    if (dots[current])       dots[current].classList.remove('active');
+
+    current = (index + total) % total;
+
+    bgSlides[current].classList.add('active');
+    if (visualImgs[current]) visualImgs[current].classList.add('active');
+    if (dots[current])       dots[current].classList.add('active');
+  }
+
+  function next() { goTo(current + 1); }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  // Dots clicáveis
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); startTimer(); });
+  });
+
+  startTimer();
+}
 
 // Mobile menu
 function initMobileMenu() {

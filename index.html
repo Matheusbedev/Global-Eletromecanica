@@ -58,7 +58,7 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" href="FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.58.07 (3).jpeg">
+  <link rel="preload" as="image" href="FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.15.jpeg">
 </head>
 <body>
 
@@ -100,51 +100,103 @@
          HERO
     ═══════════════════════════════════════ -->
     <section id="home" class="hero">
-      <div class="hero-bg">
-        <img
-          src="FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.58.07 (3).jpeg"
-          alt=""
-          class="hero-bg-img"
-          aria-hidden="true"
-          loading="eager"
-        >
+
+      <!-- Slideshow de fundo -->
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide active" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.15.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.57.51.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.11.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.58.05.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.16.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.57.59.jpeg')"></div>
         <div class="hero-overlay"></div>
       </div>
 
+      <!-- Linha decorativa teal no topo -->
+      <div class="hero-topline" aria-hidden="true"></div>
+
       <div class="container">
-        <div class="hero-body">
-          <p class="hero-eyebrow">Cambé, Paraná · Desde 2012</p>
+        <div class="hero-layout">
 
-          <h1 class="hero-title">
-            Eletromecânica<br>
-            <em>industrial</em> com<br>
-            quem entende.
-          </h1>
+          <!-- Coluna esquerda: conteúdo -->
+          <div class="hero-body">
 
-          <p class="hero-desc">
-            Manutenção, montagem e instalações para indústrias de grande porte.
-            Equipe própria, laudos técnicos e total conformidade com NRs.
-          </p>
+            <div class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              Cambé, Paraná · Desde 2012
+            </div>
 
-          <div class="hero-actions">
-            <a href="#contato" class="btn btn-light">Solicitar orçamento</a>
-            <a href="https://wa.me/554331547568" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-            </a>
+            <h1 class="hero-title">
+              Soluções<br>
+              <em>eletromecânicas</em><br>
+              de excelência<br>industrial.
+            </h1>
+
+            <p class="hero-desc">
+              Manutenção preventiva e corretiva, montagem industrial e instalações eletromecânicas com equipe especializada, laudos técnicos e conformidade total com normas regulamentadoras.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contato" class="btn btn-primary">
+                <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                Solicitar orçamento
+              </a>
+              <a href="https://wa.me/554331547568" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                WhatsApp
+              </a>
+            </div>
+
           </div>
 
+          <!-- Coluna direita: imagem em destaque + miniaturas -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-visual-frame">
+              <div class="hero-visual-slides">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.15.jpeg" alt="" class="hero-visual-img active" loading="eager">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.57.51.jpeg" alt="" class="hero-visual-img" loading="lazy">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.11.jpeg" alt="" class="hero-visual-img" loading="lazy">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.58.05.jpeg" alt="" class="hero-visual-img" loading="lazy">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-21 at 12.05.16.jpeg" alt="" class="hero-visual-img" loading="lazy">
+                <img src="FOTOS SERVIÇO/WhatsApp Image 2026-04-18 at 14.57.59.jpeg" alt="" class="hero-visual-img" loading="lazy">
+              </div>
+              <!-- Badge flutuante -->
+              <div class="hero-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Conformidade NR total</span>
+              </div>
+              <!-- Dots de navegação -->
+              <div class="hero-dots">
+                <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+                <button class="hero-dot" data-slide="3" aria-label="Slide 4"></button>
+                <button class="hero-dot" data-slide="4" aria-label="Slide 5"></button>
+                <button class="hero-dot" data-slide="5" aria-label="Slide 6"></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Stats na base -->
+      <div class="hero-stats-bar">
+        <div class="container">
           <div class="hero-stats">
             <div class="hero-stat">
-              <strong><span class="counter" data-target="12">0</span>+</strong>
-              <span>anos de experiência</span>
+              <strong>12+</strong>
+              <span>Anos de experiência</span>
             </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
             <div class="hero-stat">
-              <strong><span class="counter" data-target="100">0</span>+</strong>
-              <span>projetos entregues</span>
+              <strong>100+</strong>
+              <span>Projetos entregues</span>
             </div>
+            <div class="hero-stat-divider" aria-hidden="true"></div>
             <div class="hero-stat">
               <strong>100%</strong>
-              <span>qualidade garantida</span>
+              <span>Qualidade garantida</span>
             </div>
           </div>
         </div>
@@ -173,9 +225,9 @@
 
           <div class="sobre-content">
             <p class="eyebrow">Sobre nós</p>
-            <h2>Mais de uma década<br>no setor industrial.</h2>
+            <h2>Mais de uma década<br>de excelência industrial.</h2>
             <p class="lead">
-              Fundada em 2012, a Global Eletromecânica nasceu da visão de profissionais com mais de 30 anos de experiência. Atuamos em paradas programadas, montagens industriais, instalações elétricas e locação de equipamentos para grandes indústrias em todo o Brasil.
+              Desde 2012, a Global Eletromecânica é referência em soluções eletromecânicas para indústrias de grande porte. Com equipe própria de profissionais especializados e mais de 30 anos de experiência acumulada, executamos projetos complexos com precisão, segurança e conformidade total com normas regulamentadoras.
             </p>
 
             <ul class="pilares">
@@ -227,8 +279,8 @@
 
         <div class="section-head">
           <p class="eyebrow">O que fazemos</p>
-          <h2>Nossos serviços</h2>
-          <p class="section-desc">Soluções completas com equipe própria, laudos técnicos e conformidade com normas regulamentadoras.</p>
+          <h2>Serviços especializados</h2>
+          <p class="section-desc">Soluções completas em eletromecânica industrial com equipe própria, laudos técnicos detalhados e conformidade integral com normas regulamentadoras.</p>
         </div>
 
         <div class="servicos-grid">
@@ -301,7 +353,7 @@
             <div class="processo-num">01</div>
             <div class="processo-body">
               <h3>Contato inicial</h3>
-              <p>Atendimento por telefone, WhatsApp ou formulário. Identificamos sua demanda e definimos o escopo preliminar.</p>
+              <p>Atendimento por telefone, WhatsApp ou formulário para identificar sua demanda e definir o escopo preliminar.</p>
             </div>
           </li>
           <li class="processo-item">
@@ -346,7 +398,7 @@
         <div class="section-head">
           <p class="eyebrow">Nossos projetos</p>
           <h2>Portfólio de trabalhos</h2>
-          <p class="section-desc">Conheça alguns dos projetos realizados pela nossa equipe em indústrias de grande porte.</p>
+          <p class="section-desc">Conheça alguns dos projetos realizados pela nossa equipe em indústrias de grande porte, com foco em qualidade, segurança e conformidade.</p>
         </div>
 
         <div class="portfolio-filters" role="group" aria-label="Filtrar portfólio">
@@ -368,72 +420,57 @@
     <!-- ═══════════════════════════════════════
          PARCEIROS
     ═══════════════════════════════════════ -->
-    <section class="section parceiros">
+    <section class="parceiros">
       <div class="container">
-
         <div class="section-head text-center">
           <p class="eyebrow">Quem confia em nós</p>
-          <h2>Nossos parceiros</h2>
-          <p class="section-desc">Empresas de grande porte que confiam na qualidade e seriedade da Global Eletromecânica.</p>
+          <h2>Parceiros estratégicos</h2>
+          <p class="section-desc">Empresas líderes em seus segmentos confiam na qualidade, seriedade e excelência técnica da Global Eletromecânica.</p>
         </div>
+      </div>
 
-        <div class="parceiros-grid">
-          <div class="parceiro-item">
-            <img src="Parceiros/BRF-LOGO.png" alt="BRF" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/cargil-logo.png" alt="Cargill" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/coopavel-logo.png" alt="Coopavel" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/copagril-logo.jfif" alt="Copagril" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/LOGO-LAR.png" alt="LAR Cooperativa" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/logo-granol.png" alt="Granol" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/granosul-logo.png" alt="Granosul" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/innovare-logo.png" alt="Innovare" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/dual-logo.png" alt="Dual" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/logo-unigel.png" alt="Unigel" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/selecta-logo.png" alt="Selecta" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/superbac-logo.png" alt="Superbac" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/viposa-logo.png" alt="Viposa" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/fazendao-agronegocio.png" alt="Fazendão Agronegócio" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/safras-logo.jfif" alt="Safras" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/gelprime logo.jfif" alt="Gelprime" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/cop.agri-logo.jfif" alt="Cop Agri" loading="lazy">
-          </div>
-          <div class="parceiro-item">
-            <img src="Parceiros/Logo - Portal.PNG" alt="Portal" loading="lazy">
-          </div>
+      <!-- Carrossel infinito — sem container para ir de borda a borda -->
+      <div class="parceiros-track-wrap" aria-label="Logos dos parceiros" role="region">
+        <div class="parceiros-track" id="parceiros-track">
+          <!-- Faixa 1 (original) -->
+          <div class="parceiro-logo"><img src="Parceiros/BRF-LOGO.png"            alt="BRF"                loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/cargil-logo.png"          alt="Cargill"            loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/coopavel-logo.png"        alt="Coopavel"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/copagril-logo.jfif"       alt="Copagril"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/LOGO-LAR.png"             alt="LAR Cooperativa"    loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/logo-granol.png"          alt="Granol"             loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/granosul-logo.png"        alt="Granosul"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/innovare-logo.png"        alt="Innovare"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/dual-logo.png"            alt="Dual"               loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/logo-unigel.png"          alt="Unigel"             loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/selecta-logo.png"         alt="Selecta"            loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/superbac-logo.png"        alt="Superbac"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/viposa-logo.png"          alt="Viposa"             loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/fazendao-agronegocio.png" alt="Fazendão"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/safras-logo.jfif"         alt="Safras"             loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/gelprime logo.jfif"       alt="Gelprime"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/cop.agri-logo.jfif"       alt="Cop Agri"           loading="lazy"></div>
+          <div class="parceiro-logo"><img src="Parceiros/Logo - Portal.PNG"        alt="Portal"             loading="lazy"></div>
+          <!-- Faixa 2 (clone para loop perfeito) -->
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/BRF-LOGO.png"            alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/cargil-logo.png"          alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/coopavel-logo.png"        alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/copagril-logo.jfif"       alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/LOGO-LAR.png"             alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/logo-granol.png"          alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/granosul-logo.png"        alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/innovare-logo.png"        alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/dual-logo.png"            alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/logo-unigel.png"          alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/selecta-logo.png"         alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/superbac-logo.png"        alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/viposa-logo.png"          alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/fazendao-agronegocio.png" alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/safras-logo.jfif"         alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/gelprime logo.jfif"       alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/cop.agri-logo.jfif"       alt="" loading="lazy"></div>
+          <div class="parceiro-logo" aria-hidden="true"><img src="Parceiros/Logo - Portal.PNG"        alt="" loading="lazy"></div>
         </div>
-
       </div>
     </section>
 
@@ -444,8 +481,8 @@
       <div class="container">
         <div class="cta-inner">
           <div class="cta-text">
-            <h2>Pronto para começar<br>seu próximo projeto?</h2>
-            <p>Nossa equipe avalia sua demanda e apresenta proposta formal com escopo, cronograma e custo.</p>
+            <h2>Pronto para transformar<br>seu próximo projeto?</h2>
+            <p>Nossa equipe especializada avalia sua demanda e apresenta proposta formal com escopo detalhado, cronograma e custo discriminado.</p>
           </div>
           <div class="cta-actions">
             <a href="#contato" class="btn btn-light">Solicitar orçamento</a>
@@ -504,9 +541,9 @@
 
             <div class="contato-mapa">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.7!2d-51.2785!3d-23.2755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb4b0000000001%3A0x0!2sRua%20Miami%2C%20369%20-%20Jardim%20Fl%C3%B3rida%20II%2C%20Camb%C3%A9%20-%20PR%2C%2086182-525!5e0!3m2!1spt-BR!2sbr!4v1714000000000!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.193870664542!2d-51.278722723892!3d-23.27240425104144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb59e4f67a6359%3A0x55e5280f0e63e931!2sR.%20Miami%2C%20369%20-%20Jd%20Florida%20II%2C%20Camb%C3%A9%20-%20PR%2C%2086182-525!5e0!3m2!1spt-BR!2sbr!4v1776823250619!5m2!1spt-BR!2sbr"
                 width="100%"
-                height="220"
+                height="240"
                 style="border:0;"
                 allowfullscreen=""
                 loading="lazy"
